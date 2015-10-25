@@ -1,9 +1,11 @@
 # skele-angular
 An angular web application skeleton framework to complement skele-api
 
-
+---
 
 AngularJS Framework and other Angular extensions is used within this framework and are subject to their own licenses and copyright laws. Please refer to the respective code libaries for more information.
+
+
 ---
 
 <sup>Skele-Angular is a base Angular skeleton skeleton framework to complement skele-api.</sup>
