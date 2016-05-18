@@ -1,6 +1,9 @@
 # skele-angular
 An angular web application skeleton framework to complement skele-api
 
+*UNSTABLE*  
+This Library is currently in development. The code can be used for reference, but the application has not been throughly tested and should not be used in a development environment.
+
 ---
 
 AngularJS Framework and other Angular extensions is used within this framework and are subject to their own licenses and copyright laws. Please refer to the respective code libaries for more information.
@@ -8,8 +11,6 @@ AngularJS Framework and other Angular extensions is used within this framework a
 ---
 
 <sup>Skele-Angular is a base Angular skeleton skeleton framework to complement skele-api.</sup>
-
-<sup>Copyright (C) 2015  Ann Eliese Grey</sup>
 
 <sup>This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

@@ -1,0 +1,12 @@
+
+<!-- User Form -->
+<form name="userForm" ng-submit="processUser()">
+  <input type="email" name="username" class="user-form email" ng-model="userObject.username" placeholder="Email Address">
+
+  <input type="password" name="password" class="user-form password" ng-model="userObject.password" placeholder="Password">
+
+  <input type="password" ng-if="formType === 'register'" name="confirmPassword" class="user-form password" ng-model="userObject.confirmPassword" placeholder="Confirm Password">
+
+  <button class="form-btn">{{formType}}</button>
+</form>
+<!-- /User Form -->

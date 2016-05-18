@@ -1,0 +1,31 @@
+@import 'reset';
+@import 'variables';
+
+
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: $copy-font;
+  font-size: 100%;
+}
+
+header, .content, footer {
+  max-width: 1600px;
+  margin: 0px auto;
+}
+
+h1 {
+  color: $blue-mid;
+  font-size: 1.8em;
+  font-family: $header-font;
+}
+
+//add slight transition on hover
+a {
+  color: $blue-dark;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+a:hover {
+  color: $blue-light;
+}

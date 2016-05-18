@@ -1,0 +1,11 @@
+<section id="loginForm">
+  <h1>Login Form</h1>
+
+  <ul class="error-list" ng-if="formErrors.length">
+    <li ng-repeat="formErrors as error">
+      {{error.message}}
+    </li>
+  </ul>
+
+  <user-form type="login"></user-form>
+</section>
