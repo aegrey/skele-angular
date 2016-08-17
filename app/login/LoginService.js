@@ -12,12 +12,12 @@
     'Config',
     '$http',
     LoginService
-  });
+  ]);
 
   function LoginService(Config, $http) {
     return {
       checkUser: function(userObject) {
-        return $http(
+        var conn = $http({
           method: 'POST',
           url: Config.apiUrl,
           data: {
@@ -26,24 +26,26 @@
             username:   userObject.username,
             password:   userObject.password
           }
-        )
-        .then(
-          function successCallback(response) {
-            return response;
-          },
+        })
+        .then(successCallback, errorCallback);
 
-          function errorCallback(message, status, headers) {
-            var error = {
-              error: true,
-              message: message,
-              status: status,
-              headers: headers
-            }
+        function successCallback(response) {
+          return response;
+        }
 
-            return error;
-          }
-        );
+        function errorCallback(message, status, headers) {
+          var error = {
+            error: true,
+            message: message,
+            status: status,
+            headers: headers
+          };
+          return error;
+        }
+
+        return conn;
       }
     };
   }
+
 }());

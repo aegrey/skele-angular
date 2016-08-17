@@ -8,7 +8,7 @@
   'use strict';
 
   angular.module('skeleApp')
-  .directive('UserFormDirective', [
+  .directive('userFormDirective', [
     '$templateCache',
     '$compile',
     UserFormDirective
@@ -17,7 +17,7 @@
   function UserFormDirective($templateCache, $compile) {
   	return {
   		restrict: 'E',
-      templateUrl: 'user_form/user_form.html',
+      templateUrl: 'assets/views/user-form.html',
       scope: {
         formType: '@'
       },

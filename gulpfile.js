@@ -16,7 +16,7 @@
 // LIBRARY INCLUDES
 //---------------------------
 var gulp       = require('gulp'),
-templateCache  = require('gulp-angular-templatecache'),
+templateCache  = require("gulp-ng-html2js"),
 browserSync    = require('browser-sync'),
 runSequence    = require('run-sequence'),
 changed        = require('gulp-changed'),
@@ -43,7 +43,7 @@ var buildPath   = './build',
 stylePath       = './app/assets/styles/**/*.scss',
 imagePath       = './app/assets/images/**/*',
 scriptPath      = './app/**/*.js',
-viewPath        = './app/**/*.html',
+viewPath        = './app/assets/views/*.html',
 reload          = browserSync.reload({stream: true}),
 prod            = false;
 
@@ -80,6 +80,11 @@ gulp.task('bower', function () {
   gulp.src('./app/index.html')
     .pipe(wiredep())
     .pipe(gulp.dest(buildPath));
+
+  return gulp.src('./bower_components/**/*.*')
+    .pipe(changed(buildPath))
+    .pipe(gulp.dest(buildPath + '/bower_components'))
+    .on('error', gutil.log);
 });
 
 //---------------------------
@@ -113,15 +118,11 @@ gulp.task('styles:prod', function () {
 // VIEW TASKS
 //---------------------------
 gulp.task('views', function() {
-
-  return gulp.src(['!app/index.html', viewPath])
-    .pipe(templateCache({
-      standalone: true
-    }))
-    .pipe(gulp.dest('app/common'))
+  return gulp.src(viewPath)
+    .pipe(changed(buildPath + '/assets/views'))
+    .pipe(gulp.dest(buildPath + '/assets/views'))
     .on('error', gutil.log);
 });
-
 
 //---------------------------
 // IMAGE TASKS

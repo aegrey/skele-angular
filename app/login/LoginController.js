@@ -28,6 +28,8 @@
     $scope.formErrors = []; //ng-model for errors !TODO: Move this into a service
     $scope.formType = 'login'; //scope variable for directive
 
+    console.log('--login initiated--');
+
 
 
     function checkUser() {

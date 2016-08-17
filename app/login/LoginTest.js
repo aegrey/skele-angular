@@ -5,6 +5,6 @@
 */
 
 //TODO: Finish unit tests
-describe('LoginController', function() {
+//describe('LoginController', function() {
 
-});
+//});

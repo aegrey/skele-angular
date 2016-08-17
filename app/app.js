@@ -10,32 +10,26 @@
   //INITIATE MAIN APP
   angular.module('skeleApp', [
     'ui.router',
-    'ngCookies',
     'ngTouch',
-    'ngAnimate',
     'ngMessages'
   ])
 
   // ROUTING
   .config(['$stateProvider',
     '$urlRouterProvider',
-    '$templateCache',
-    function($stateProvider, $urlRouterProvider, $templateCache) {
+    function($stateProvider, $urlRouterProvider) {
 
     $stateProvider
-    .state('landing', {
+    .state('/', {
       url: '/',
-      templateUrl: 'landing/index.html',
-      controller: 'LandingController as landing',
-
-    })
-    .state('login', {
-      url: '/login',
-      templateUrl: 'user/login.html',
+      templateUrl: 'assets/views/login.html',
       controller: 'LoginController as login',
-    })
+    });
 
-    $urlRouterProvider.otherwise('/');
-  }]);
+  }])
+
+  .run(function() {
+    console.log('-- app initiated --');
+  });
 
 })();
