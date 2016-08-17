@@ -1,5 +1,5 @@
 /* -----------------------------------------------------------------------------
-| 
+|
 | GULP BUILD SCRIPT
 |
 | TASKS:
@@ -8,8 +8,6 @@
 | - gulp csslink - runs csslint
 | - gulp build - compiles a build for prod
 |
-| TODO: Removed Template Cache - rewrite view, remove concat for dev watch
-|
 ----------------------------------------------------------------------------- */
 
 'use strict';
@@ -17,26 +15,26 @@
 //---------------------------
 // LIBRARY INCLUDES
 //---------------------------
-var gulp       = require('gulp'), 
+var gulp       = require('gulp'),
 templateCache  = require('gulp-angular-templatecache'),
-browserSync    = require('browser-sync'), 
-runSequence    = require('run-sequence'), 
-changed        = require('gulp-changed'), 
-gulpif         = require('gulp-if'), 
-gutil          = require('gulp-util'), 
-rename         = require('gulp-rename'), 
-concat         = require('gulp-concat'), 
-clean          = require('gulp-clean'), 
-autoprefixer   = require('gulp-autoprefixer'), 
-sourcemaps     = require('gulp-sourcemaps'), 
-sass           = require('gulp-sass'), 
-scsslint       = require('gulp-scss-lint'), 
-scssLintStyle  = require('gulp-scss-lint-stylish'), 
-jshint         = require('gulp-jshint'), 
-jshintStyle    = require('jshint-stylish'), 
-uglify         = require('gulp-uglify'), 
-ngAnnotate     = require('gulp-ng-annotate'), 
-wiredep        = require('wiredep').stream 
+browserSync    = require('browser-sync'),
+runSequence    = require('run-sequence'),
+changed        = require('gulp-changed'),
+gulpif         = require('gulp-if'),
+gutil          = require('gulp-util'),
+rename         = require('gulp-rename'),
+concat         = require('gulp-concat'),
+clean          = require('gulp-clean'),
+autoprefixer   = require('gulp-autoprefixer'),
+sourcemaps     = require('gulp-sourcemaps'),
+sass           = require('gulp-sass'),
+scsslint       = require('gulp-scss-lint'),
+scssLintStyle  = require('gulp-scss-lint-stylish'),
+jshint         = require('gulp-jshint'),
+jshintStyle    = require('jshint-stylish'),
+uglify         = require('gulp-uglify'),
+ngAnnotate     = require('gulp-ng-annotate'),
+wiredep        = require('wiredep').stream
 
 //---------------------------
 //CONFIG VARIABLES
@@ -115,10 +113,6 @@ gulp.task('styles:prod', function () {
 // VIEW TASKS
 //---------------------------
 gulp.task('views', function() {
-  
-  gulp.src('app/index.html')
-    .pipe(gulp.dest(buildPath))
-    .on('error', gutil.log);
 
   return gulp.src(['!app/index.html', viewPath])
     .pipe(templateCache({
@@ -151,15 +145,15 @@ gulp.task('clean', function () {
 gulp.task('watch', function(callback) {
   callback = callback || function() {};
   runSequence('clean', ['bower', 'views', 'lint', 'scripts:dev', 'styles:dev', 'images'], callback);
-  
+
   var server = require("browser-sync").create();
   server.init({
-      server: { 
-        baseDir: buildPath, 
-        middleware: [history({})]
+      server: {
+        baseDir: buildPath
+        //middleware: [history({})]
       },
       port: 9000,
-      https: true
+      https: false
   });
 
   gulp.watch(viewPath,   ['views']).on('change', browserSync.reload);

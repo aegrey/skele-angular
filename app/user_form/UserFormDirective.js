@@ -14,25 +14,28 @@
     UserFormDirective
   ]);
 
-function UserFormDirective($templateCache, $compile) {
-	return {
-		restrict: 'E',
-    templateUrl: 'user_form/user_form.html',
-    scope: {
-      formType: '@'
-    }
-		require: "ngModel",
-		link: link
-	};
+  function UserFormDirective($templateCache, $compile) {
+  	return {
+  		restrict: 'E',
+      templateUrl: 'user_form/user_form.html',
+      scope: {
+        formType: '@'
+      },
+  		require: "ngModel",
+  		link: link
+  	};
 
-  function link(scope, elements, attrs, ngModelController) {
+    function link(scope, elements, attrs, ngModelController) {
 
       function checkPassword() {
-      if($scope.userObject.password === $scope.userObject.passwordConfirm) {
-        //TODO: Process User
 
-      } else {
-        $scope.formErrors.push({'message': 'Passwords do not match'});
+        if($scope.userObject.password === $scope.userObject.passwordConfirm) {
+          //TODO: Process User
+        } else {
+          $scope.formErrors.push({'message': 'Passwords do not match'});
+        }
       }
     }
-}]);
+  }
+
+}());
